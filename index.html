@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Dual-Verse Social Platform</title>
+  <!-- Google Fonts & Phosphor Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-stage">
+
+  <!-- Background Animated Mesh Gradients -->
+  <div class="glow-sphere sphere-1"></div>
+  <div class="glow-sphere sphere-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- FIRST TIME ONBOARDING OVERLAY -->
+  <div class="onboarding-overlay" id="onboardingScreen">
+    <div class="onboarding-card glass-card">
+      <div class="brand-welcome">
+        <h1 class="logo-text">AURA</h1>
+        <span class="tagline">Your Dual-Verse Universe</span>
+      </div>
+      <h2>Set Up Your Identity</h2>
+      <p>Configure how the world and your close friends see you.</p>
+
+      <form id="onboardingForm" class="onboarding-form">
+        <div class="input-group">
+          <label><i class="ph-bold ph-user"></i> Public Display Name</label>
+          <input type="text" id="inputName" placeholder="e.g. Alex Rivera" required>
+        </div>
+
+        <div class="input-group">
+          <label><i class="ph-bold ph-at"></i> Username Handle</label>
+          <input type="text" id="inputHandle" placeholder="e.g. alex_rivera" required>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btnEnterAura">Enter AURA <i class="ph-bold ph-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="app-container" id="appContainer">
+    
+    <!-- Top Header & Dual Mode Switcher -->
+    <header class="main-header">
+      <div class="brand">
+        <h1 class="logo-text">AURA</h1>
+        <span class="vibe-badge" id="vibeBadge">Stage Mode</span>
+      </div>
+
+      <!-- Segmented Mode Switcher -->
+      <div class="mode-switcher">
+        <button class="switch-btn active" id="btnStage">
+          <i class="ph-bold ph-globe"></i>
+          <span>Stage</span>
+        </button>
+        <button class="switch-btn" id="btnRoom">
+          <i class="ph-bold ph-sparkle"></i>
+          <span>Room</span>
+        </button>
+        <div class="switch-glider"></div>
+      </div>
+    </header>
+
+    <!-- MAIN VIEW 1: THE PUBLIC STAGE -->
+    <main class="view-section active" id="stageView">
+      <div class="section-intro">
+        <h2>Public Drops</h2>
+        <p>Listen to 30s audio thoughts & viral vibes around the world</p>
+      </div>
+
+      <!-- Stage Feed List -->
+      <div class="feed-container" id="stageFeed">
+        <div class="empty-state-card glass-card" id="emptyStageState">
+          <i class="ph-bold ph-microphone-stage"></i>
+          <h3>No Public Drops Yet</h3>
+          <p>Be the first to share a voice drop or thought with the world!</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- MAIN VIEW 2: THE INNER CIRCLE ROOM -->
+    <main class="view-section" id="roomView">
+      <div class="section-intro">
+        <h2>The Living Room</h2>
+        <p>Your zero-filter zone with close circle</p>
+      </div>
+
+      <!-- Circle Friends Avatars -->
+      <div class="circle-members-bar">
+        <div class="member-pill active">
+          <div class="avatar-mini-glow">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Friend" id="userAvatarImg">
+          </div>
+          <span id="roomUserName">You</span>
+          <span class="status-dot online"></span>
+        </div>
+        <button class="add-member-btn" id="btnAddMember" title="Add Friend">
+          <i class="ph-bold ph-plus"></i>
+        </button>
+      </div>
+
+      <!-- Interactive Canvas Board -->
+      <div class="canvas-board-wrapper">
+        <div class="canvas-header">
+          <div class="canvas-title">
+            <i class="ph-bold ph-layout"></i>
+            <span>Shared Board</span>
+          </div>
+          <div class="canvas-tools">
+            <button class="tool-btn" id="btnPinNote"><i class="ph-bold ph-note-pencil"></i> Note</button>
+            <button class="tool-btn" id="btnPinSong"><i class="ph-bold ph-music-notes"></i> Music</button>
+          </div>
+        </div>
+
+        <div class="live-canvas" id="liveCanvas">
+          <div class="empty-state-board" id="emptyBoardState">
+            <i class="ph-bold ph-pins"></i>
+            <p>No pinned notes yet.<br>Tap "+ Note" or "+ Music" to add!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrated Room Live Chat -->
+      <div class="room-chat-box glass-card">
+        <div class="chat-header">
+          <i class="ph-bold ph-chats-teardrop"></i>
+          <span>Inner Circle Chat</span>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+          <div class="empty-chat-state" id="emptyChatState">
+            <i class="ph-bold ph-chat-circle-dots"></i>
+            <p>Your room chat is clear. Start chatting!</p>
+          </div>
+        </div>
+        
+        <form class="chat-input-row" id="chatForm">
+          <button type="button" class="icon-btn-ghost" id="btnVoiceMsg">
+            <i class="ph-bold ph-microphone"></i>
+          </button>
+          <input type="text" id="chatInput" placeholder="Drop a message or secret..." autocomplete="off">
+          <button type="submit" class="send-btn">
+            <i class="ph-bold ph-paper-plane-right"></i>
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- Floating Action Trigger Button -->
+    <button class="fab-create" id="fabCreate">
+      <i class="ph-bold ph-plus"></i>
+    </button>
+
+    <!-- CREATE POST MODAL POPUP -->
+    <div class="modal-overlay" id="createModal">
+      <div class="modal-card glass-card">
+        <div class="modal-header">
+          <h3>Create New Drop</h3>
+          <button class="icon-btn-ghost" id="btnCloseModal"><i class="ph-bold ph-x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="post-destination-picker">
+            <label class="radio-card">
+              <input type="radio" name="dest" value="stage" checked>
+              <div class="radio-content">
+                <i class="ph-bold ph-globe"></i>
+                <span>Public Stage</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="dest" value="room">
+              <div class="radio-content">
+                <i class="ph-bold ph-sparkle"></i>
+                <span>Inner Room</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Audio Record Simulation -->
+          <div class="audio-recorder-section">
+            <button class="record-mic-btn" id="btnRecordAudio">
+              <i class="ph-bold ph-microphone"></i>
+            </button>
+            <span class="record-timer" id="recordTimer">Tap to record (Max 30s)</span>
+          </div>
+
+          <textarea id="modalCaption" placeholder="Write a caption or thought..." rows="3"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary" id="btnPublishDrop">Publish Aura Drop</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Firebase App & Firestore SDKs -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
