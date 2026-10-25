@@ -1,0 +1,17 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "AURA",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "AURA",
+  "start_url": "/aura-social-app/",
+  "theme_color": "#ffffff",
+  "id": "/",
+  "description": "AURA — Dual-Verse Social Platform",
+  "categories": [
+    "social",
+    "social networking"
+  ]
+}
